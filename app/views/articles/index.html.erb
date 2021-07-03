@@ -1,14 +1,18 @@
+<div class="nav">
+  <div class="navbar-header"><%= link_to "Wikinimous", articles_path %></div>
+  <div class="navbar-header"><%= link_to "New Article", new_article_path %></div>
+</div>
 <div class="container">
-  <div class="d-flex justify-content-between">
-    <p>Wikinimous</p>
-    <div><%= link_to "New Article", new_article_path %></div>
+  <div class="row">
+    <div id="article-list" class="col-sm-8 col-sm-offset-2">
+      <% @articles.each do |article| %>
+        <article>
+          <h2><%= link_to article.title, article_path(article) %></h2>
+          <p><%= article.content %></p>
+        </article>
+      <% end %>
+    </div>
   </div>
-  <h1>Articles</h1>
-  <ul>
-    <% @articles.each do |article| %>
-      <li><%= link_to article.title, article_path(article) %></li>
-    <% end %>
-  </ul>
 </div>
 
 
